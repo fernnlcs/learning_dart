@@ -1,5 +1,15 @@
-import 'package:learning_dart/learning_dart.dart' as learning_dart;
+import 'dart:async';
+import 'dart:io';
 
-void main(List<String> arguments) {
-  print('Hello world: ${learning_dart.calculate()}!');
+import 'package:shelf/shelf.dart';
+import 'package:shelf/shelf_io.dart' as io;
+
+void main(List<String> arguments) async {
+  final HttpServer server = await io.serve(_handler, '0.0.0.0', 4466);
+  print('Online at ${server.address.address}:${server.port}');
+}
+
+FutureOr<Response> _handler(Request request) {
+  print(request);
+  return Response(200, body: "Body");
 }
