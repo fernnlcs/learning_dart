@@ -1,3 +1,13 @@
-int calculate() {
-  return 6 * 7;
+import 'package:learning_dart/src/app_module.dart';
+import 'package:shelf/shelf.dart';
+import 'package:shelf_modular/shelf_modular.dart';
+
+Future<Handler> startShelfModular() async {
+  final Handler handler = Modular(
+    module: AppModule(),
+    middlewares: [
+      logRequests(),
+    ],
+  );
+  return handler;
 }
