@@ -1,11 +1,5 @@
-import 'dart:io';
+import 'package:learning_dart/learning_dart.dart' as learning_dart;
 
-import 'package:shelf/shelf.dart';
-import 'package:shelf/shelf_io.dart' as shelf_io;
-
-void main(List<String> arguments) async {
-  final HttpServer server = await shelf_io.serve(
-      (request) => Response(200, body: "ok"), "localhost", 8080);
-
-  print("Server initialized in http://localhost:8080");
+void main(List<String> arguments) {
+  print('Hello world: ${learning_dart.calculate()}!');
 }
